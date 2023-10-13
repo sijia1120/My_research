@@ -129,6 +129,10 @@ for random_seed in seed_list:
     y_hat = model.predict([merged_test_latent, merged_test_firm]).reshape(-1)
     yhat_df[random_seed] = y_hat
     print()
+##### R^2 is 0.16154368610188108 ##############
+
+##############  MODEL 1b ####################
+
 
 
 
