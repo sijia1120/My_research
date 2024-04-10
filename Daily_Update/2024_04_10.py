@@ -1,9 +1,14 @@
 ## List of 88 Firm-level Charactersitics and 49 core variable ##
 
-char_core =['acc', 'agr', 'beta', 'bm', 'cash','cashpr', 'cfp','chatoia', 'chcsho','chfeps','chinv', 'chmom','chpmia', 'chtx',
-'currat', 'depr','dy', 'ear', 'ep', 'gma','grcapx', 'grltnoa','ill', 'indmom', 'invest','lev', 'lgr', 'maxret', 'mom12m', 'mom1m',
-'mom36m','mve','nincr','orgcap','pchgm_pchsale','pchsale_pchinvt', 'pchsale_pchrect', 'pchsale_pchxsga','retvol', 'roaq', 
-'roavol', 'roeq','salecash', 'saleinv','sgr','sp', 'std_dolvol', 'std_turn', 'turn',]
+#char_core =['acc', 'agr', 'beta', 'bm', 'cash','cashpr', 'cfp','chatoia', 'chcsho','chfeps','chinv', 'chmom','chpmia', 'chtx',
+#'mom36m','mve','nincr','orgcap','pchgm_pchsale','pchsale_pchinvt', 'pchsale_pchrect', 'pchsale_pchxsga','retvol', 'roaq', 
+#'currat', 'depr','dy', 'ear', 'ep', 'gma','grcapx', 'grltnoa','ill', 'indmom', 'invest','lev', 'lgr', 'maxret', 'mom12m', 'mom1m',
+#'roavol', 'roeq','salecash', 'saleinv','sgr','sp', 'std_dolvol', 'std_turn', 'turn',]
+# some features are deleted, new char_core is shown as follow (in total 43, 6 less than original 49 core features)
+char_core =['acc', 'agr', 'beta', 'bm', 'cash','cashpr', 'cfp','chatoia', 'chcsho','chinv', 'chmom','chpmia', 'chtx','currat', 'depr','dy', 'ear', 'ep', 'gma',
+            'grcapx', 'grltnoa','indmom', 'invest','lev', 'lgr', 'mom12m', 'mom1m','mom36m','mve','nincr','orgcap','pchgm_pchsale','pchsale_pchinvt', 'pchsale_pchrect', 
+            'pchsale_pchxsga', 'roaq', 'roavol', 'roeq','salecash', 'saleinv','sgr','sp', 'turn',]
+
 
 char_all = ['absacc','acc','aeavol','age','agr','beta','betasq','bm','bm_ia','cash','cashdebt','cashpr','cfp','cfp_ia','chatoia','chcsho','chempia','chinv','chmom','chpmia',
  'chtx','cinvest','convind','currat','depr','divi','divo','dolvol','dy','ear','egr','ep','gma','grcapx','grltnoa','herf','hire','idiovol','indmom',
@@ -45,12 +50,15 @@ def get_Dataset(df_file):
 data_ml = get_Dataset(df_file = '/kaggle/input/year2-phd-dataset/firm_df.pkl')
 
 
-# %% Features and Target
+# %% Features and Target (for 88 variables) ----------------
 target = ['predicted_return']
 features = data_ml.columns[2:-1].tolist()
+# for 43 core variable 
+data_ml = data_ml[['date','permno','predicted_return'] + char_core]
+features = char_core
 
 
-# %% Split the dataset for linear regression
+# %% Split the dataset for linear regression ----------------
 train_set_num = int(data_ml['date'].nunique()*0.7)
 val_set_num = int(data_ml['date'].nunique()*0.1)
 
@@ -71,7 +79,8 @@ y_penalized_test = data_ml_test[target].values
 X_penalized_test = data_ml_test[features].values
 
 
-#%% Fit the Lasso model and print R2
+
+#%% Fit the Lasso model and print R2 ---------------
 def fit_model(train_set, test_set, Model, alpha):
     x_penalized_train = train_set[features].values 
     y_penalized_train = train_set[target].values 
