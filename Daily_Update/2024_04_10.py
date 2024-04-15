@@ -9,7 +9,8 @@ char_core =['acc', 'agr', 'beta', 'bm', 'cash','cashpr', 'cfp','chatoia', 'chcsh
             'grcapx', 'grltnoa','indmom', 'invest','lev', 'lgr', 'mom12m', 'mom1m','mom36m','mve','nincr','orgcap','pchgm_pchsale','pchsale_pchinvt', 'pchsale_pchrect', 
             'pchsale_pchxsga', 'roaq', 'roavol', 'roeq','salecash', 'saleinv','sgr','sp', 'turn',]
 
-features_short =["Div_Yld", "Eps", "Mkt_Cap_12M_Usd", "Mom_11M_Usd", "Ocf", "Pb", "Vol1Y_Usd"]
+features_short =["agr", "bm", "indmom", "ipo", "mom36m", "rd_mve", "roeq", "sp", "sue", "turn"]
+# These 10 features are selected via Lasso Regression
 
 char_all = ['absacc','acc','aeavol','age','agr','beta','betasq','bm','bm_ia','cash','cashdebt','cashpr','cfp','cfp_ia','chatoia','chcsho','chempia','chinv','chmom','chpmia',
  'chtx','cinvest','convind','currat','depr','divi','divo','dolvol','dy','ear','egr','ep','gma','grcapx','grltnoa','herf','hire','idiovol','indmom',
