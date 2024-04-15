@@ -22,3 +22,7 @@ pd.DataFrame( # Using DataFrame format
   columns=['PC1','PC2','PC3','PC4'] # Change column names
 ).head()
 # Show first 5 lines
+
+# Comments on next steps: ---
+# These four factors can then be used as orthogonal features in any ML engine.
+# The fact that the features are uncorrelated is undoubtedly an asset.
