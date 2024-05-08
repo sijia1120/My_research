@@ -1,4 +1,4 @@
-###  -------  From Theory to Practice with Bayesian Neural Network, Using Python --------
+###  -------  From Theory to Practice with Bayesian Neural Network, Using Python ---------
 ### https://towardsdatascience.com/from-theory-to-practice-with-bayesian-neural-network-using-python-9262b611b825
 
 
