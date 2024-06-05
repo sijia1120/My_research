@@ -16,3 +16,6 @@
 1. Residual Block with Reconstruction Loss
 - 49 firm-level characteristics 
 - 49 latent factors, constructed by 49 firm-level characteristics 
+
+2024-06-05:
+1. Customized KL-Divergence Regularizer 
